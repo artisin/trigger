@@ -110,7 +110,9 @@ const PopupInner = React.forwardRef<PopupInnerRef, PopupInnerProps>(
     }
 
     function forceAlign() {
-      alignRef.current?.forceAlign();
+      if (typeof alignRef.current?.forceAlign === 'function') {
+        alignRef.current?.forceAlign();
+      }
     }
 
     function onInternalAlign(popupDomNode: HTMLElement, matchAlign: AlignType) {
